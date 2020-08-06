@@ -10,7 +10,7 @@
 
  		produits('http://localhost:3000/api/cameras').then(cameras => {
 			console.log(cameras)
-			//boucle forEach pour répeter l'action autant qu'il y a de produits //
+			//boucle forEach pour répeter l'action autant qu'il y a de produits
 			cameras.forEach(camera => {
 				console.log(camera)
 
@@ -27,9 +27,6 @@
 							<div class="libelle">
 								<h2>${camera.name}</h2>
 								<p>${camera.description}</p>
-							</div>
-							<div class="prix">
-								<p>${camera.price}</p>
 							</div>
 						</a>
 					</article>
