@@ -9,20 +9,36 @@ console.log(resultCart.length);
 for (var i = 0; i < resultCart.length; i++) {
 
     content.innerHTML += `
-    <article class="productcart">
-        <img class="productimage" src="${resultCart[i].picture}" alt="photo de la caméra" widht="50" height="50">
-        <div class="libelle">
-          <h2>${resultCart[i].name}</h2>
-          <p>${resultCart[i].price/100}</p>
-          <button id='plus'>+</button>
-          <button>-</button>
-        </div>
-    </article>
-    `
-    console.log(resultCart[i]);
-    let cart2 = localStorage.getItem('cart');
-    console.log(JSON.parse(cart2));
+        <tr data-item-key="">
+          <td class="product-remove">
+            <a>×</a>
+          </td>
+            <td class="product-thumbnail">
+                            <img class="productimage" src="${resultCart[i].picture}" alt="photo de la caméra" widht="50" height="50">
+            </td>
 
+            <td class="product-name">
+              ${resultCart[i].name}
+            </td>
+
+           <td class="product-price">
+              ${resultCart[i].price/100}
+           </td>
+
+           <td class="product-quantity">
+              ${resultCart[i].quantity}
+              <button id='plus'>+</button>
+              <button>-</button>
+          </td>
+
+           <td class="product-subtotal">
+
+          </td>
+        </tr>
+
+
+    `
+    let cart2 = localStorage.getItem('cart');
     let plus = document.getElementById('plus');
     console.log(plus);
     for (let i = 0; i < plus.length; i++) {
@@ -33,26 +49,8 @@ for (var i = 0; i < resultCart.length; i++) {
       });
     }
 }
-let totalPrice = resultCart;
-
-// for (var i = 0; i < array.length; i++) {
-//   array[i]
-// }
 
 
-
-// resultCart.forEach((product, i) => {
-//   objectApi.innerHTML += `
-//   <article class="produit">
-//       <img class="productimage" src="${product.picture}" alt="photo de la caméra" widht="200" height="200">
-//       <div class="libelle">
-//         <h2>${product.name}</h2>
-//         <p>${product.price}</p>
-//       </div>
-//   </article>
-//   `
-// });
-//
 
 document.getElementById("contact").addEventListener("click", function(e) {
   let erreur;
@@ -92,7 +90,8 @@ document.getElementById("contact").addEventListener("click", function(e) {
  //
  //
 
-
+//faie en sorte que se soit une autre variable pour la qty
+//3 étape pour la page produits
 
 
 
