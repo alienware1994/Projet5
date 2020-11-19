@@ -1,3 +1,6 @@
+//
+
+
 
 
 
@@ -14,7 +17,7 @@ for (var i = 0; i < resultCart.length; i++) {
             <a>×</a>
           </td>
             <td class="product-thumbnail">
-                            <img class="productimage" src="${resultCart[i].picture}" alt="photo de la caméra" widht="50" height="50">
+            <img class="productimage" src="${resultCart[i].picture}" alt="photo de la caméra" widht="50" height="50">
             </td>
 
             <td class="product-name">
@@ -26,69 +29,147 @@ for (var i = 0; i < resultCart.length; i++) {
            </td>
 
            <td class="product-quantity">
-              ${resultCart[i].quantity}
-              <button id='plus'>+</button>
-              <button>-</button>
+             <span class="quantity"> ${resultCart[i].quantity} </span>
+              <button class='plus'>+</button>
+              <button class='minus'>-</button>
           </td>
-
-           <td class="product-subtotal">
-
-          </td>
+          <td class="totalproduct-price">
+           <span class="totalProduct">
+          ${resultCart[i].price/100*resultCart[i].quantity}
+            </span>
+       </td>
+      
         </tr>
 
 
     `
-    let cart2 = localStorage.getItem('cart');
-    let plus = document.getElementById('plus');
-    console.log(plus);
+  let newCart = resultCart ;
+  console.log(newCart)
+    let plus = document.getElementsByClassName('plus');
+    let quantity = document.getElementsByClassName('quantity');
+    let minus = document.getElementsByClassName('minus');
+    let totalProductPrice = document.getElementsByClassName('totalProduct');
+
     for (let i = 0; i < plus.length; i++) {
-      console.log(i);
       plus[i].addEventListener('click', () => {
-        cart[i].quantity++;
-        console.log(cart);
+        newCart[i].quantity++;
+        quantity[i].textContent = newCart[i].quantity;
+        content.innerText;
+         
+        
+       // JSON.stringify(newCart);
+       // (JSON.parse(localStorage.getItem('cart')));
+        localStorage.setItem('cart', JSON.stringify(newCart));
+        quantity.addEventListener('input', function(event){
+          var value = event.target.value;
+          if (!isNaN(value)) {
+            totalProductPrice.innerHTML = changeCost(value);
+          }
+        })
+        console.log(newCart);
+      });
+    }
+    for (let i = 0; i < minus.length; i++) {
+      minus[i].addEventListener('click', () => {
+        newCart[i].quantity--;
+        quantity[i].textContent = newCart[i].quantity;
+       // JSON.stringify(newCart);
+       // (JSON.parse(localStorage.getItem('cart')));
+        localStorage.setItem('cart', JSON.stringify(newCart));
+        console.log(newCart);
       });
     }
 }
 
 
 
-document.getElementById("contact").addEventListener("click", function(e) {
-  let erreur;
+//document.getElementById("contact").addEventListener("click", function (e) {
+ // let erreur;
 
-  let inputs = document.getElementById("contact").getElementsByTagName('input');
+ // let inputs = document.getElementById("contact").getElementsByTagName("input");
 
-  for (let i = 0; i < inputs.length; i++) {
-    if (!inputs[i].value) {
-      erreur = "Veuillez renseigner tous les champs";
+ // for (let i = 0; i < inputs.length; i++) {
+ //   if (!inputs[i].value) {
+ //     erreur = "Veuillez renseigner tous les champs";
+ //   }
+ // }
+//}); //
+
+
+let productQty = document.getElementsByClassName("product-quantity").value;
+  console.log(productQty)
+  function getTotalArrayCart() {
+    
+  }
+  
+  getTotalArrayCart();
+
+  const userCart = {
+    contact: {},
+    products: [],
+  }
+
+  document.getElementById("contact").addEventListener("submit", function(envoi){
+    envoi.preventDefault();
+
+    if (resultCart.length == 0) {
+      alert("Votre pânier est vide.")
+    } else {
+      // récup de tout les champs
+      let formName = document.getElementById("firstName").value;
+      let formSurname = document.getElementById("lastName").value;
+      let formAdress = document.getElementById("address").value;
+      let formCity = document.getElementById("city").value;
+      let formMail = document.getElementById("email").value;
+
+      userCart.contact = {
+        firstName: formName,
+        lastName: formSurname,
+        address: formAdress,
+        city: formCity,
+        email: formMail,
+      }
+      console.log(userCart.contact);
+      
+    
+      for (let v = 0; v < resultCart.length; v++) {
+        for (let w = 0; w < resultCart[v].quantity; w++) {
+          
+          userCart.products.push(resultCart[v].id)
+        }
+        
+      };
+        const fetchOptions = {
+          headers:{
+              'Content-Type': 'application/json',
+          },
+          method:"POST",
+          body: JSON.stringify(userCart)
+          
+        }
+        console.log(userCart);
+        
+        fetch("http://localhost:3000/api/cameras/order", fetchOptions)
+        .then(function(response) {
+          return response.json()
+        })
+        .then(function(data){
+          let orderId = data.orderId;
+          localStorage.setItem("orderid",orderId );
+
+          console.log(data);
+          console.log(orderId);
+        })
+        window.location.href = "http://127.0.0.1:5500/Front/confirmation.html";//
     }
-}
+    
+  })
 
-// if (erreur) {
-//   e.preventDefault();
-//   document.getElementById('erreur').innerHTML = erreur;
-//   return false;
-// } else {
-//   alert('Formulaire envoyé !');
-// }
+  
 
-;})
  //total du prix calculer en * le prix par la notion de quantity
  //
- // let cart2 = localStorage.getItem('cart');
- // console.log(JSON.parse(cart2));
- //
- // let plus = document.getElementById('plus');
- // for (let i = 0; i < plus.length; i++) {
- //   plus[i].addEventListener('click', () => {
- //     // console.log(cart);
- //     // console.log(cart[i]);
- //     // console.log(i);
- //     cart[i].qty++;
- //     console.log(cart);
- //   });
- // }
- //
- //
+
 
 //faie en sorte que se soit une autre variable pour la qty
 //3 étape pour la page produits
@@ -98,79 +179,6 @@ document.getElementById("contact").addEventListener("click", function(e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// let cart = {};
-// cart.products = [];
-// cart = [{name:'produit1', qty: 2, price: 100},{name:'produit2', qty: 4, price: 300}];
-// localStorage.setItem('cart', JSON.stringify(cart));
-//
-// let cart2 = localStorage.getItem('cart');
-// console.log(JSON.parse(cart2));
-// let cartCamera = localStorage.getItem('produit');
-//
-// console.log(cartCamera);
-// let content = document.getElementById('contenu');
-
-// cart.forEach(item => {
-//   content.innerHTML += `<p>${item.name}${item.qty}<span class="plus">+</span></p>`
-// });
-
-// let plus = document.getElementsByClassName('plus');
-// for (let i = 0; i < plus.length; i++) {
-//   plus[i].addEventListener('click', () => {
-//     // console.log(cart);
-//     // console.log(cart[i]);
-//     // console.log(i);
-//     cart[i].qty++;
-//     console.log(cart);
-//   });
-// }
-
-// function clic() {
-//     console.log("Clic !");
-// }
-//
-// var boutonElt = document.getElementById("bouton");
-// // // Ajout d'un gestionnaire pour l'événement click
-// // boutonElt.addEventListener("click", function () {
-// //
-// // });
-// boutonElt.addEventListener("click", () => {
-//   localStorage.setItem(productData.name, JSON.stringify(product));
-//     }
-// );
-
-// const addToCart = (productData) => {
-//  // Assigne valeur à envoyer à localStorage
-//  const product = [
-//    productData._id,
-//    productData.name,
-//    productData.price,
-//    productData.imageUrl,
-//  ];
-//  boutonElt.addEventListener("click", () => {
-//    localStorage.setItem(productData.name, JSON.stringify(product));
-//      }
-//  );
-//  console.log(boutonElt);
-//  };
- // Envoie valeur à localStorage après un clique
-
-//  boutonElt.addEventListener("click", () => {
-//    localStorage.setItem(productData.name, JSON.stringify(product));
-//    boutonElt.classList.add("invisible");
-//    div.textContent = "Le produit a été ajouté au panier !";
-//   }
-// );
 
 
 
