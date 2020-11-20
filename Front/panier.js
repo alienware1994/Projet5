@@ -124,9 +124,9 @@ document.getElementById("contact").addEventListener("submit", function (envoi) {
 
         console.log(data);
         console.log(orderId);
+//--------------------------------------------------------Redirection vers la page confirmation--------------------------------------------------------------------------//
         window.location.href = "http://127.0.0.1:5500/Front/confirmation.html";
       });
-    //--------------------------------------------------------Redirection vers la page confirmation--------------------------------------------------------------------------//
-    
+  
   }
 });
