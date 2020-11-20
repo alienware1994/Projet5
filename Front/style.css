@@ -222,6 +222,10 @@ tr{
 	width: 20px;
 	margin-right: 5px;
 }
+#commande-articles{
+    display: grid;
+    justify-content: center;
+}
 #deja-panier{
 	margin-top: 10px;
 	color: red;

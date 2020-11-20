@@ -7,13 +7,10 @@ let resumeCart = document.getElementById("commande-articles");
 
 for (let i = 0; i < resultCart.length; i++) {
   resumeCart.innerHTML += `<tr data-item-key="">
-    <td class="product-remove">
-      <a>×</a>
-    </td>
       <td class="product-thumbnail">
       <img class="productimage" src="${
         resultCart[i].picture
-      }" alt="photo de la caméra" widht="50" height="50">
+      }" alt="photo de la caméra" widht="300" height="300">
       </td>
 
       <td class="product-name">
@@ -26,7 +23,7 @@ for (let i = 0; i < resultCart.length; i++) {
     </td>
     <td class="totalproduct-price">
      <span class="totalProduct">
-    ${(resultCart[i].price / 100) * resultCart[i].quantity}
+    ${(resultCart[i].price / 100) * resultCart[i].quantity}€
       </span>
  </td>
 
