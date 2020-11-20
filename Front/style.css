@@ -257,7 +257,7 @@ tr{
 }
 
 /* debut media query */
-@media screen and (min-width: 700px)
+@media screen and (max-width: 700px)
 {
 	/* ----- panier ------ */
 	.main-formulaire{
@@ -281,12 +281,24 @@ tr{
 		-webkit-box-align: center;
 		        align-items: center;
 	}
+	#produits{
+		display: flex;
+		flex-direction: column;
+	}
+	.product{
+		display: flex;
+		flex-direction: column;
+	}
 }
-@media screen and (min-width: 768px)
+@media screen and (max-width: 768px)
 {
 	.objet{
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		        flex-direction: row;
+	}
+	#produits{
+		display: flex;
+		flex-direction: column;
 	}
 }
