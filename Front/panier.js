@@ -10,9 +10,7 @@ console.log(resultCart.length);
 for (var i = 0; i < resultCart.length; i++) {
   content.innerHTML += `
         <tr class="lookproduit">
-          <td class="product-remove">
-          <button class='delete'>X</button>
-          </td>
+          
             <td class="product-thumbnail">
             <img class="productimage" src="${
               resultCart[i].picture
@@ -71,14 +69,7 @@ for (var i = 0; i < resultCart.length; i++) {
       location.reload();
     });
   }
-  for (let i = 0; i < deleteProduct.length; i++) {
-    deleteProduct[i].addEventListener("click", (e) =>{
-      delete newCart[e.currentTarget];
-      localStorage.setItem("cart", JSON.stringify(newCart));
-    });
-    
-      
-  }
+
 }
 //--------------------------------------------------Constante contenant le tableau product et l'objet contact------------------------------------------------------------//
 const userCart = {
