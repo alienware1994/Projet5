@@ -126,12 +126,8 @@ p{
 
 }
 .afficheproduit{
-	display: flex;
-justify-content: center;
-text-align: end;
-
-display: inline;
-text-align: center;
+	width: 40%;
+    margin: auto;
 }
 .styleform{
 	display: flex;
