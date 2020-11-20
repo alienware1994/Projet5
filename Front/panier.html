@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style.css">
-  <title>Panier - Orinoco</title>
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li class="entreprise"><a href="./"><img src="">Orinoco</a></li>
-				<li><a href="./panier.html">Panier</a></li>
-			</ul>
-		</nav>
-		<header>
-			<h1>Votre panier</h1>
-		</header>
-    <table>
-        <thead>
-            <tr>
-                <th class="product-remove"></th>
-                <th class="product-thumbnail"></th>
-                <th class="product-name">Produit</th>
-                <th class="product-price">Prix</th>
-                <th class="product-quantity">Quantité</th>
-                <th class="product-subtotal">Total</th>
-            </tr>
-        </thead>
-        <tbody id='contenu'>
-        </tbody>
-      </table>
-		<section>
-				<form method="post" id="contact" >
-					<div class="champ">
-					  <label for="firstName">Nom :</label>
-					  <input type="text" name="fisrtName" id="firstName" required>
-					</div>
-					<div class="champ">
-					  <label for="lastName">Prénom : </label>
-					  <input type="text" name="lastname" id="lastName" required>
-					</div>
-					<div class="champ">
-					  <label for="address">Adresse :</label>
-					  <input type="text" id="address" required>
-					</div>
-					<div class="champ">
-					  <label for="city">Ville</label>
-					  <input type="text" id="city" required>
-					</div>
-					<div class="champ">
-					  <label for="email">Email : </label>
-					  <input type="email" id="email" required>
-					</div>
-					<div class="champ">
-					  <button type="submit" class="btn" name="button">Commander</button>
-					</div>
-				  </form>
-		</section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Panier - Orinoco</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="entreprise">
+          <a href="./"><img src="" />Orinoco</a>
+        </li>
+        <li><a href="./panier.html">Panier</a></li>
+      </ul>
+    </nav>
+    <header>
+      <h1>Votre panier</h1>
+    </header>
+    <table class="afficheproduit">
+      <thead>
+        <tr>
+          <th class="product-remove"></th>
+          <th class="product-thumbnail"></th>
+          <th class="product-name">Produit</th>
+          <th class="product-price">Prix</th>
+          <th class="product-quantity">Quantité</th>
+          <th class="product-subtotal">Total</th>
+		</tr>
+      </thead>
+	  <tbody id="contenu"></tbody>
+	  <tfoot>
+		<th class="product-total">Total Commande :</th>
+	</tfoot>
+    </table>
+    <section class="styleform">
+      <form method="post" id="contact">
+        <div class="champ">
+          <label for="firstName">Nom :</label>
+          <input type="text" name="fisrtName" id="firstName" required />
+        </div>
+        <div class="champ">
+          <label for="lastName">Prénom : </label>
+          <input type="text" name="lastname" id="lastName" required />
+        </div>
+        <div class="champ">
+          <label for="address">Adresse :</label>
+          <input type="text" id="address" required />
+        </div>
+        <div class="champ">
+          <label for="city">Ville</label>
+          <input type="text" id="city" required />
+        </div>
+        <div class="champ">
+          <label for="email">Email : </label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="champ">
+          <button type="submit" class="btn" name="button">Commander</button>
+        </div>
+      </form>
+    </section>
     <script src="panier.js" charset="utf-8"></script>
-</body>
+  </body>
 </html>

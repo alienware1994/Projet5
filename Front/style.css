@@ -10,8 +10,12 @@ body{
 } */
 nav{
 	padding: 20px;
-	background-color: #552117;
-	font-family: Montserrat, cursive;
+	background-color: #883221;
+	text-decoration-color: azure;
+	font-family: 'Trebuchet MS', Helvetica, cursive;
+}
+a{
+	color: rgb(0, 0, 0);
 }
 ul{
 	display: -webkit-box;
@@ -65,7 +69,7 @@ p{
 	fle
 }
 .produit{
-	width: 50%;
+	width: 50% ;
 }
 .col1{
 	width: 33%;
@@ -121,6 +125,23 @@ p{
 .img-article{
 
 }
+.afficheproduit{
+	display: flex;
+justify-content: center;
+text-align: end;
+
+display: inline;
+text-align: center;
+}
+.styleform{
+	display: flex;
+    
+    justify-content: center;
+	text-align: end;
+	text-align: right;
+padding-top: 55px;
+}
+}
 .detail-article{
 	display: -webkit-box;
 	display: flex;
@@ -135,13 +156,7 @@ p{
 	margin: auto;
 	width: 200px;
 }
-/* #bouton{
-	width: 184px;
-	background-color: #ADCB8E;
-	padding: 10px;
-	border-radius: 10px;
-	margin: auto;
-} */
+
 .prix{
 	font-size: 22px;
 	font-weight: 600;
@@ -164,6 +179,12 @@ p{
 }
 label, button{
 	margin-top: 10px;
+}
+tr{
+	border: #8B3C31 2px solid;
+}
+.lookproduit{
+	border: #8B3C31 2px solid;
 }
 .vide{
 	text-align: center;
@@ -240,8 +261,7 @@ label, button{
 {
 	/* ----- panier ------ */
 	.main-formulaire{
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
+		
 		        flex-direction: row;
 		flex-wrap: wrap;
 		-webkit-box-pack: center;
